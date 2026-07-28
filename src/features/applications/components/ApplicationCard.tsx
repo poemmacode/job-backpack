@@ -31,7 +31,7 @@ export function ApplicationCard({ application }: ApplicationCardProps) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
       <div className="flex justify-between items-start">
-        <Link href={`/dashboard/jobs/${application.jobId}`} className="flex-1">
+        <Link href={`/dashboard/applications/${application.id}`} className="flex-1">
           <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
             {application.job.title}
           </h3>

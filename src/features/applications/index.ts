@@ -3,6 +3,8 @@ export { ApplyButton } from './components/ApplyButton';
 export { ApplicationCard } from './components/ApplicationCard';
 export { ApplicationList } from './components/ApplicationList';
 export { ApplicationFilters } from './components/ApplicationFilters';
+export { StatusUpdateButton } from './components/StatusUpdateButton';
+export { StatusHistory } from './components/StatusHistory';
 export {
   getApplications,
   getApplication,
@@ -14,4 +16,5 @@ export {
   getStaleApplications,
   getRecentApplications,
   getApplicationMetrics,
+  getValidTransitions,
 } from './repositories/applications';
