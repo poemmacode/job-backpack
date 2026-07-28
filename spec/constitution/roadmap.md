@@ -9,8 +9,8 @@
 | 003 | Auth (Login/Signup)        | completado  |
 | 004 | Job CRUD                   | completado  |
 | 005 | Job Listing & Filters      | completado  |
-| 006 | Job Details | completado |
-| 007 | Application Tracking       | pendiente   |
+| 006 | Job Details                | completado  |
+| 007 | Application Tracking | completado |
 | 008 | Application Dashboard      | pendiente   |
 | 009 | Application Status Updates | pendiente   |
 | 010 | Notes                      | pendiente   |

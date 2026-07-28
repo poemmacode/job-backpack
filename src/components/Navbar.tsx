@@ -15,7 +15,7 @@ export function Navbar({ user }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
@@ -23,18 +23,18 @@ export function Navbar({ user }: NavbarProps) {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="#features" className="text-gray-700 hover:text-gray-900 transition-colors">
               Features
             </Link>
             <Link
               href="#how-it-works"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-gray-700 hover:text-gray-900 transition-colors"
             >
               How it Works
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
             {user ? (
               <>
                 <Link href="/dashboard">
@@ -45,6 +45,11 @@ export function Navbar({ user }: NavbarProps) {
                 <Link href="/dashboard/jobs">
                   <Button variant="secondary" size="sm">
                     My Jobs
+                  </Button>
+                </Link>
+                <Link href="/dashboard/applications">
+                  <Button variant="secondary" size="sm">
+                    Applications
                   </Button>
                 </Link>
                 <Link href="/dashboard/jobs/new">
@@ -76,7 +81,7 @@ export function Navbar({ user }: NavbarProps) {
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -100,15 +105,15 @@ export function Navbar({ user }: NavbarProps) {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
+          <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 px-2 py-1">
+              <Link href="#features" className="text-gray-700 hover:text-gray-900 px-2 py-1">
                 Features
               </Link>
-              <Link href="#how-it-works" className="text-gray-600 hover:text-gray-900 px-2 py-1">
+              <Link href="#how-it-works" className="text-gray-700 hover:text-gray-900 px-2 py-1">
                 How it Works
               </Link>
-              <div className="flex flex-col space-y-2 pt-4 border-t border-gray-100">
+              <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
                 {user ? (
                   <>
                     <Link href="/dashboard">
@@ -119,6 +124,11 @@ export function Navbar({ user }: NavbarProps) {
                     <Link href="/dashboard/jobs">
                       <Button variant="secondary" size="sm" className="w-full">
                         My Jobs
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/applications">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Applications
                       </Button>
                     </Link>
                     <Link href="/dashboard/jobs/new">

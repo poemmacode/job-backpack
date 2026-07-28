@@ -8,27 +8,44 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  avatarUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  jobs      Job[]
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String?
+  avatarUrl    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  jobs         Job[]
+  applications Application[]
 }
 
 model Job {
+  id           String        @id @default(uuid())
+  title        String
+  company      String
+  location     String?
+  url          String?
+  salary       String?
+  notes        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  applications Application[]
+
+  @@index([userId])
+}
+
+model Application {
   id        String   @id @default(uuid())
-  title     String
-  company   String
-  location  String?
-  url       String?
-  salary    String?
-  notes     String?
+  status    String   @default("interested")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  jobId     String
+  job       Job      @relation(fields: [jobId], references: [id])
   userId    String
   user      User     @relation(fields: [userId], references: [id])
 
+  @@unique([jobId, userId])
   @@index([userId])
+  @@index([status])
 }
