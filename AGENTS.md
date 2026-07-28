@@ -45,18 +45,16 @@ spec/features/NNN-feature-name
 ```
 
 4. Escribir `spec.md`
-5. Esperar aprobación
-6. Escribir `plan.md`
+5. Escribir `plan.md`
+6. Escribir `tasks.md`
 7. Esperar aprobación
-8. Escribir `tasks.md`
-9. Esperar aprobación
-10. Implementar únicamente las tareas marcadas
-11. Ejecutar lint
-12. Ejecutar tests
-13. Verificar build
-14. Actualizar documentación
-15. Marcar tareas completadas
-16. Actualizar roadmap
+8. Implementar únicamente las tareas marcadas
+9. Ejecutar lint
+10. Ejecutar tests
+11. Verificar build
+12. Actualizar documentación
+13. Marcar tareas completadas
+14. Actualizar roadmap.mp
 
 Nunca saltarse pasos.
 

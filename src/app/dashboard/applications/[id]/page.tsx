@@ -28,11 +28,17 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
   if (!application) {
     notFound();
   }
-
+return (
+  <pre>{JSON.stringify(application, null, 2)}</pre>
+);
+/**
   const [notes, attachments] = await Promise.all([
     getNotesByApplication(id),
     getAttachments(id),
   ]);
+*/
+const notes = [];
+const attachments = [];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
