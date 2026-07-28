@@ -42,6 +42,16 @@ export function Navbar({ user }: NavbarProps) {
                     Dashboard
                   </Button>
                 </Link>
+                <Link href="/dashboard/jobs">
+                  <Button variant="secondary" size="sm">
+                    My Jobs
+                  </Button>
+                </Link>
+                <Link href="/dashboard/jobs/new">
+                  <Button variant="primary" size="sm">
+                    Add Job
+                  </Button>
+                </Link>
                 <form action={logout}>
                   <Button variant="outline" size="sm" type="submit">
                     Logout
@@ -104,6 +114,16 @@ export function Navbar({ user }: NavbarProps) {
                     <Link href="/dashboard">
                       <Button variant="secondary" size="sm" className="w-full">
                         Dashboard
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/jobs">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        My Jobs
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/jobs/new">
+                      <Button variant="primary" size="sm" className="w-full">
+                        Add Job
                       </Button>
                     </Link>
                     <form action={logout}>
