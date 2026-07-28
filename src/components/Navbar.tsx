@@ -3,8 +3,15 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from './Button';
+import { logout } from '@/features/auth/actions/auth';
 
-export function Navbar() {
+interface NavbarProps {
+  user?: {
+    email?: string;
+  } | null;
+}
+
+export function Navbar({ user }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -28,16 +35,33 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login">
-              <Button variant="secondary" size="sm">
-                Login
-              </Button>
-            </Link>
-            <Link href="/signup">
-              <Button variant="primary" size="sm">
-                Sign Up
-              </Button>
-            </Link>
+            {user ? (
+              <>
+                <Link href="/dashboard">
+                  <Button variant="secondary" size="sm">
+                    Dashboard
+                  </Button>
+                </Link>
+                <form action={logout}>
+                  <Button variant="outline" size="sm" type="submit">
+                    Logout
+                  </Button>
+                </form>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button variant="secondary" size="sm">
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button variant="primary" size="sm">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           <button
@@ -75,16 +99,33 @@ export function Navbar() {
                 How it Works
               </Link>
               <div className="flex flex-col space-y-2 pt-4 border-t border-gray-100">
-                <Link href="/login">
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Login
-                  </Button>
-                </Link>
-                <Link href="/signup">
-                  <Button variant="primary" size="sm" className="w-full">
-                    Sign Up
-                  </Button>
-                </Link>
+                {user ? (
+                  <>
+                    <Link href="/dashboard">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <form action={logout}>
+                      <Button variant="outline" size="sm" type="submit" className="w-full">
+                        Logout
+                      </Button>
+                    </form>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/login">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Login
+                      </Button>
+                    </Link>
+                    <Link href="/signup">
+                      <Button variant="primary" size="sm" className="w-full">
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
