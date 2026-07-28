@@ -1,4 +1,4 @@
-import type { Job } from '@/generated/prisma/client';
+import type { Job } from '@prisma/client';
 import { JobCard } from './JobCard';
 
 interface JobListProps {

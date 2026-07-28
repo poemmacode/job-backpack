@@ -1,4 +1,4 @@
-import type { Job } from '@/generated/prisma/client';
+import type { Job } from '@prisma/client';
 import { JobHeader } from './JobHeader';
 import { JobInfo } from './JobInfo';
 import { JobNotes } from './JobNotes';

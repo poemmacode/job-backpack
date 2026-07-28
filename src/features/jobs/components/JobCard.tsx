@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Job } from '@/generated/prisma/client';
+import type { Job } from '@prisma/client';
 
 interface JobCardProps {
   job: Job;

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import type { Job } from '@/generated/prisma/client';
+import type { Job } from '@prisma/client';
 import { Button } from '@/components/Button';
 import { JobSearchBar } from '@/features/jobs/components/JobSearchBar';
 import { JobFilters } from '@/features/jobs/components/JobFilters';
