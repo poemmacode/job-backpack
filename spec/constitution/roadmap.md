@@ -14,14 +14,15 @@
 | 008 | Application Dashboard      | completado |
 | 009 | Application Status Updates | completado |
 | 010 | Notes                      | completado |
-| 011 | Attachments                | completado  |
-| 012 | Recruiters                 | pendiente  |
-| 013 | Main Dashboard             | pendiente  |
-| 014 | User Profile               | pendiente  |
-| 015 | Search Global              | pendiente  |
-| 016 | CI/CD Pipeline             | pendiente  |
-| 017 | Vercel Deployment          | pendiente  |
-| 018 | Error Monitoring           | pendiente  |
+| 011 | Attachments                | completado |
+| 012 | Kanban Board              | pendiente  |
+| 013 | Recruiters                 | pendiente  |
+| 014 | Main Dashboard             | pendiente  |
+| 015 | User Profile               | pendiente  |
+| 016 | Search Global              | pendiente  |
+| 017 | CI/CD Pipeline             | pendiente  |
+| 018 | Vercel Deployment          | pendiente  |
+| 019 | Error Monitoring           | pendiente  |
 
 ## Futuro
 
