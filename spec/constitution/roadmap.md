@@ -6,8 +6,8 @@
 | --- | -------------------------- | ----------- |
 | 001 | Project Setup              | completado  |
 | 002 | Landing Page               | completado  |
-| 003 | Auth (Login/Signup) | completado |
-| 004 | Job CRUD                   | pendiente   |
+| 003 | Auth (Login/Signup)        | completado  |
+| 004 | Job CRUD | completado |
 | 005 | Job Listing & Filters      | pendiente   |
 | 006 | Job Details                | pendiente   |
 | 007 | Application Tracking       | pendiente   |
