@@ -48,8 +48,13 @@ export default async function DashboardPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
             <div className="space-y-2">
-              <Link href="/dashboard/jobs/new" className="block">
+              <Link href="/dashboard/overview" className="block">
                 <Button variant="primary" size="sm" className="w-full">
+                  Application Dashboard
+                </Button>
+              </Link>
+              <Link href="/dashboard/jobs/new" className="block">
+                <Button variant="secondary" size="sm" className="w-full">
                   Add New Job
                 </Button>
               </Link>

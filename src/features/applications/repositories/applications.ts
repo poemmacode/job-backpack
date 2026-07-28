@@ -78,3 +78,67 @@ export async function hasApplication(jobId: string, userId: string) {
   });
   return !!application;
 }
+
+export async function getStaleApplications(userId: string, days = 14) {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - days);
+
+  return prisma.application.findMany({
+    where: {
+      userId,
+      createdAt: { lt: cutoff },
+      status: { notIn: ['interview', 'offer', 'accepted', 'rejected'] },
+    },
+    include: { job: true },
+    orderBy: { createdAt: 'asc' },
+  });
+}
+
+export async function getRecentApplications(userId: string, limit = 5) {
+  return prisma.application.findMany({
+    where: { userId },
+    include: { job: true },
+    orderBy: { createdAt: 'desc' },
+    take: limit,
+  });
+}
+
+export async function getApplicationMetrics(userId: string) {
+  const [counts, stale, all] = await Promise.all([
+    prisma.application.groupBy({
+      by: ['status'],
+      where: { userId },
+      _count: true,
+    }),
+    prisma.application.count({
+      where: {
+        userId,
+        createdAt: { lt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000) },
+        status: { notIn: ['interview', 'offer', 'accepted', 'rejected'] },
+      },
+    }),
+    prisma.application.findMany({
+      where: { userId },
+      select: { status: true },
+    }),
+  ]);
+
+  const byStatus = counts.reduce(
+    (acc, item) => {
+      acc[item.status] = item._count;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
+  const total = all.length;
+  const interviewCount = byStatus['interview'] || 0;
+  const responseRate = total > 0 ? Math.round((interviewCount / total) * 100) : 0;
+
+  return {
+    total,
+    byStatus,
+    responseRate,
+    staleCount: stale,
+  };
+}
