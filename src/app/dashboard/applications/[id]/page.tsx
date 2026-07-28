@@ -23,15 +23,16 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
   }
 
   const { id } = await params;
-  const [application, notes, attachments] = await Promise.all([
-    getApplication(id, user.id),
-    getNotesByApplication(id),
-    getAttachments(id),
-  ]);
+  const application = await getApplication(id, user.id);
 
   if (!application) {
     notFound();
   }
+
+  const [notes, attachments] = await Promise.all([
+    getNotesByApplication(id),
+    getAttachments(id),
+  ]);
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
