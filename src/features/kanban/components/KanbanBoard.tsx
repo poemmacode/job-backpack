@@ -79,7 +79,7 @@ export function KanbanBoard({ applications }: KanbanBoardProps) {
       const targetColumn = columns.find((col) =>
         col.applications.some((app) => app.id === String(over.id))
       );
-      if (targetColumn) {
+      if (targetColumn && activeApp.status !== targetColumn.id) {
         moveApplication(activeApp, targetColumn.id);
       }
       return;
