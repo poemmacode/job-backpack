@@ -2,8 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
+import { createJobAction, updateJobAction } from '../actions/jobs';
 
 interface JobFormProps {
+  jobId?: string;
   initialData?: {
     title?: string;
     company?: string;
@@ -12,11 +14,10 @@ interface JobFormProps {
     salary?: string | null;
     notes?: string | null;
   };
-  action: (formData: FormData) => Promise<{ error?: Record<string, string[]> } | void>;
   submitLabel: string;
 }
 
-export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
+export function JobForm({ jobId, initialData, submitLabel }: JobFormProps) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const [errors, setErrors] = useState<Record<string, string[]>>({});
@@ -24,7 +25,9 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
 
   async function handleSubmit(formData: FormData) {
     setIsPending(true);
-    const result = await action(formData);
+    const result = jobId
+      ? await updateJobAction(jobId, formData)
+      : await createJobAction(formData);
     if (result?.error) {
       setErrors(result.error);
       setIsPending(false);

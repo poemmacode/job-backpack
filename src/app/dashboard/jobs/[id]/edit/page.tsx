@@ -2,7 +2,6 @@ import { getUser } from '@/features/auth/hooks/useAuth';
 import { redirect, notFound } from 'next/navigation';
 import { getJob } from '@/features/jobs/repositories/jobs';
 import { JobForm } from '@/features/jobs';
-import { updateJobAction } from '@/features/jobs/actions/jobs';
 
 export default async function EditJobPage({ params }: { params: Promise<{ id: string }> }) {
   const user = await getUser();
@@ -21,8 +20,8 @@ export default async function EditJobPage({ params }: { params: Promise<{ id: st
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Edit Job</h1>
         <div className="bg-white rounded-xl border border-gray-200 p-8">
           <JobForm
+            jobId={job.id}
             initialData={job}
-            action={(formData) => updateJobAction(id, formData)}
             submitLabel="Update Job"
           />
         </div>
