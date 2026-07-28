@@ -16,5 +16,5 @@ export {
   getStaleApplications,
   getRecentApplications,
   getApplicationMetrics,
-  getValidTransitions,
 } from './repositories/applications';
+export { getValidTransitions } from './utils/status-transitions';

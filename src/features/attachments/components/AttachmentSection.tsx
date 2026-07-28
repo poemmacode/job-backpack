@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect, useTransition } from 'react';
-import { getAttachments } from '../repositories/attachments';
+import { useRouter } from 'next/navigation';
 import { AttachmentForm } from './AttachmentForm';
 import { AttachmentList } from './AttachmentList';
 import type { Attachment } from '../types';
@@ -12,32 +11,20 @@ interface AttachmentSectionProps {
 }
 
 export function AttachmentSection({ applicationId, initialAttachments }: AttachmentSectionProps) {
-  const [attachments, setAttachments] = useState<Attachment[]>(initialAttachments);
-  const [isPending, startTransition] = useTransition();
-
-  const fetchAttachments = useCallback(async () => {
-    const fetchedAttachments = await getAttachments(applicationId);
-    setAttachments(fetchedAttachments);
-  }, [applicationId]);
-
-  useEffect(() => {
-    startTransition(async () => {
-      await fetchAttachments();
-    });
-  }, [fetchAttachments]);
+  const router = useRouter();
 
   function handleAttachmentUploaded() {
-    fetchAttachments();
+    router.refresh();
   }
 
   function handleAttachmentDeleted() {
-    fetchAttachments();
+    router.refresh();
   }
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-gray-900">Attachments ({attachments.length})</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Attachments ({initialAttachments.length})</h3>
       </div>
 
       <AttachmentForm
@@ -45,11 +32,7 @@ export function AttachmentSection({ applicationId, initialAttachments }: Attachm
         onAttachmentUploaded={handleAttachmentUploaded}
       />
 
-      {isPending ? (
-        <div className="text-center py-8 text-gray-500 text-sm">Loading attachments...</div>
-      ) : (
-        <AttachmentList attachments={attachments} onAttachmentDeleted={handleAttachmentDeleted} />
-      )}
+      <AttachmentList attachments={initialAttachments} onAttachmentDeleted={handleAttachmentDeleted} />
     </div>
   );
 }

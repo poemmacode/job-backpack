@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { updateApplicationStatusAction } from '@/features/applications/actions/applications';
-import { getValidTransitions } from '@/features/applications/repositories/applications';
+import { getValidTransitions } from '@/features/applications/utils/status-transitions';
 
 interface StatusUpdateButtonProps {
   applicationId: string;

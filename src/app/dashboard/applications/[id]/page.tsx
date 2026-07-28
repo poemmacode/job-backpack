@@ -6,8 +6,6 @@ import { StatusBadge } from '@/features/applications/components/StatusBadge';
 import { StatusUpdateButton } from '@/features/applications/components/StatusUpdateButton';
 import { StatusHistory } from '@/features/applications/components/StatusHistory';
 import { DeleteApplicationButton } from './DeleteApplicationButton';
-import { NoteSection } from '@/features/notes/components/NoteSection';
-import { getNotesByApplication } from '@/features/notes/repositories/notes';
 import { AttachmentSection } from '@/features/attachments/components/AttachmentSection';
 import { getAttachments } from '@/features/attachments/repositories/attachments';
 
@@ -29,8 +27,7 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const [notes, attachments] = await Promise.all([
-    getNotesByApplication(id),
+  const [attachments] = await Promise.all([
     getAttachments(id),
   ]);
 
@@ -85,12 +82,7 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
             )}
           </div>
 
-          {application.job.notes && (
-            <div className="mt-6">
-              <h3 className="text-sm font-medium text-gray-500 mb-2">Notes</h3>
-              <p className="text-gray-700 whitespace-pre-wrap">{application.job.notes}</p>
-            </div>
-          )}
+      
 
           <div className="mt-6 pt-6 border-t border-gray-200">
             <StatusHistory createdAt={application.createdAt} updatedAt={application.updatedAt} />
@@ -103,11 +95,11 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
         </div>
 
         <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
-          <NoteSection applicationId={application.id} initialNotes={notes} />
+         
         </div>
 
         <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
-          
+          <AttachmentSection applicationId={application.id} initialAttachments={attachments} />
         </div>
       </div>
     </div>

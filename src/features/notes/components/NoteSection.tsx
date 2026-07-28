@@ -1,7 +1,11 @@
 'use client';
 
 import { useState, useCallback, useEffect, useTransition } from 'react';
-import { getNotesByApplication, getNotesByType, searchNotes } from '../repositories/notes';
+import {
+  getNotesByApplicationAction,
+  getNotesByTypeAction,
+  searchNotesAction,
+} from '../actions/notes';
 import { NoteForm } from './NoteForm';
 import { NoteList } from './NoteList';
 import { NoteFilters } from './NoteFilters';
@@ -19,17 +23,19 @@ export function NoteSection({ applicationId, initialNotes }: NoteSectionProps) {
   const [isPending, startTransition] = useTransition();
 
   const fetchNotes = useCallback(async () => {
-    let fetchedNotes: Note[];
+    let result: { data?: Note[]; error?: string };
 
     if (searchQuery) {
-      fetchedNotes = await searchNotes(applicationId, searchQuery);
+      result = await searchNotesAction(applicationId, searchQuery);
     } else if (selectedType !== 'all') {
-      fetchedNotes = await getNotesByType(applicationId, selectedType);
+      result = await getNotesByTypeAction(applicationId, selectedType);
     } else {
-      fetchedNotes = await getNotesByApplication(applicationId);
+      result = await getNotesByApplicationAction(applicationId);
     }
 
-    setNotes(fetchedNotes);
+    if (result.data) {
+      setNotes(result.data);
+    }
   }, [applicationId, selectedType, searchQuery]);
 
   useEffect(() => {
