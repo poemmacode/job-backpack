@@ -13,8 +13,8 @@
 | 007 | Application Tracking       | completado |
 | 008 | Application Dashboard      | completado |
 | 009 | Application Status Updates | completado |
-| 010 | Notes                      | completado  |
-| 011 | Attachments                | pendiente  |
+| 010 | Notes                      | completado |
+| 011 | Attachments                | completado  |
 | 012 | Recruiters                 | pendiente  |
 | 013 | Main Dashboard             | pendiente  |
 | 014 | User Profile               | pendiente  |

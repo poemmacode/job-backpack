@@ -36,15 +36,16 @@ model Job {
 }
 
 model Application {
-  id        String   @id @default(uuid())
-  status    String   @default("interested")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  jobId     String
-  job       Job      @relation(fields: [jobId], references: [id])
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  notes     Note[]
+  id          String       @id @default(uuid())
+  status      String       @default("interested")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  jobId       String
+  job         Job          @relation(fields: [jobId], references: [id])
+  userId      String
+  user        User         @relation(fields: [userId], references: [id])
+  notes       Note[]
+  attachments Attachment[]
 
   @@unique([jobId, userId])
   @@index([userId])
@@ -62,4 +63,17 @@ model Note {
 
   @@index([applicationId])
   @@index([type])
+}
+
+model Attachment {
+  id            String      @id @default(uuid())
+  name          String
+  url           String
+  size          Int
+  type          String
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
+  @@index([applicationId])
 }

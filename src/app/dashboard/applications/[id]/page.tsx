@@ -8,6 +8,8 @@ import { StatusHistory } from '@/features/applications/components/StatusHistory'
 import { DeleteApplicationButton } from './DeleteApplicationButton';
 import { NoteSection } from '@/features/notes/components/NoteSection';
 import { getNotesByApplication } from '@/features/notes/repositories/notes';
+import { AttachmentSection } from '@/features/attachments/components/AttachmentSection';
+import { getAttachments } from '@/features/attachments/repositories/attachments';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -21,9 +23,10 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
   }
 
   const { id } = await params;
-  const [application, notes] = await Promise.all([
+  const [application, notes, attachments] = await Promise.all([
     getApplication(id, user.id),
     getNotesByApplication(id),
+    getAttachments(id),
   ]);
 
   if (!application) {
@@ -100,6 +103,10 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
 
         <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
           <NoteSection applicationId={application.id} initialNotes={notes} />
+        </div>
+
+        <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
+          <AttachmentSection applicationId={application.id} initialAttachments={attachments} />
         </div>
       </div>
     </div>
