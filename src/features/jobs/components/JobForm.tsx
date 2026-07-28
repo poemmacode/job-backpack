@@ -43,7 +43,7 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
           type="text"
           required
           defaultValue={initialData?.title}
-          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
           placeholder="Software Engineer"
         />
         {errors.title && <p className="mt-1 text-sm text-red-600">{errors.title[0]}</p>}
@@ -59,7 +59,7 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
           type="text"
           required
           defaultValue={initialData?.company}
-          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
           placeholder="Google"
         />
         {errors.company && <p className="mt-1 text-sm text-red-600">{errors.company[0]}</p>}
@@ -74,7 +74,7 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
           name="location"
           type="text"
           defaultValue={initialData?.location ?? ''}
-          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
           placeholder="San Francisco, CA or Remote"
         />
       </div>
@@ -88,7 +88,7 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
           name="url"
           type="url"
           defaultValue={initialData?.url ?? ''}
-          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
           placeholder="https://..."
         />
         {errors.url && <p className="mt-1 text-sm text-red-600">{errors.url[0]}</p>}
@@ -103,7 +103,7 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
           name="salary"
           type="text"
           defaultValue={initialData?.salary ?? ''}
-          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
           placeholder="$100,000 - $150,000"
         />
       </div>
@@ -117,7 +117,7 @@ export function JobForm({ initialData, action, submitLabel }: JobFormProps) {
           name="notes"
           rows={4}
           defaultValue={initialData?.notes ?? ''}
-          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
           placeholder="Any additional notes..."
         />
       </div>

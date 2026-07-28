@@ -26,7 +26,7 @@ export function JobSearchBar({ value, onChange }: JobSearchBarProps) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search jobs by title or company..."
-        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
       />
     </div>
   );

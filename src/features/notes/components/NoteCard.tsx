@@ -58,7 +58,7 @@ export function NoteCard({ note, onNoteUpdated, onNoteDeleted }: NoteCardProps) 
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-900 placeholder-gray-500"
               />
               <div className="flex gap-2">
                 <button

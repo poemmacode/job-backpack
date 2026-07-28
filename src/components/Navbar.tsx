@@ -44,23 +44,28 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
               <div className="h-8 w-8">
                 <BackpackIcon />
               </div>
-              <div className="h-6 w-24">
+              <div className="hidden sm:block h-6 w-24">
                 <Logo />
               </div>
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="#features" className="text-gray-700 hover:text-gray-900 transition-colors">
-              Features
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-gray-700 hover:text-gray-900 transition-colors"
-            >
-              How it Works
-            </Link>
-          </div>
+          {!user && (
+            <div className="hidden md:flex items-center space-x-8">
+              <Link
+                href="#features"
+                className="text-gray-700 hover:text-gray-900 transition-colors"
+              >
+                Features
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="text-gray-700 hover:text-gray-900 transition-colors"
+              >
+                How it Works
+              </Link>
+            </div>
+          )}
 
           <div className="hidden md:flex items-center space-x-3">
             {user ? (
@@ -135,12 +140,19 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link href="#features" className="text-gray-700 hover:text-gray-900 px-2 py-1">
-                Features
-              </Link>
-              <Link href="#how-it-works" className="text-gray-700 hover:text-gray-900 px-2 py-1">
-                How it Works
-              </Link>
+              {!user && (
+                <>
+                  <Link href="#features" className="text-gray-700 hover:text-gray-900 px-2 py-1">
+                    Features
+                  </Link>
+                  <Link
+                    href="#how-it-works"
+                    className="text-gray-700 hover:text-gray-900 px-2 py-1"
+                  >
+                    How it Works
+                  </Link>
+                </>
+              )}
               <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
                 {user ? (
                   <>

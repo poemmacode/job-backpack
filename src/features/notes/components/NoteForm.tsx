@@ -50,7 +50,7 @@ export function NoteForm({ applicationId, onNoteCreated }: NoteFormProps) {
           onChange={(e) => setContent(e.target.value)}
           placeholder="Write your note..."
           rows={2}
-          className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+          className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-900 placeholder-gray-500"
         />
         <button
           type="submit"
