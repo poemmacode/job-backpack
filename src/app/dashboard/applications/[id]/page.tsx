@@ -6,6 +6,8 @@ import { StatusBadge } from '@/features/applications/components/StatusBadge';
 import { StatusUpdateButton } from '@/features/applications/components/StatusUpdateButton';
 import { StatusHistory } from '@/features/applications/components/StatusHistory';
 import { DeleteApplicationButton } from './DeleteApplicationButton';
+import { NoteSection } from '@/features/notes/components/NoteSection';
+import { getNotesByApplication } from '@/features/notes/repositories/notes';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -19,7 +21,10 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
   }
 
   const { id } = await params;
-  const application = await getApplication(id, user.id);
+  const [application, notes] = await Promise.all([
+    getApplication(id, user.id),
+    getNotesByApplication(id),
+  ]);
 
   if (!application) {
     notFound();
@@ -88,13 +93,13 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex gap-3">
-            <StatusUpdateButton
-              applicationId={application.id}
-              currentStatus={application.status}
-              userId={user.id}
-            />
-            <DeleteApplicationButton applicationId={application.id} userId={user.id} />
+            <StatusUpdateButton applicationId={application.id} currentStatus={application.status} />
+            <DeleteApplicationButton applicationId={application.id} />
           </div>
+        </div>
+
+        <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
+          <NoteSection applicationId={application.id} initialNotes={notes} />
         </div>
       </div>
     </div>

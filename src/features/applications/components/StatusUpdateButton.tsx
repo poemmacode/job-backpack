@@ -8,7 +8,6 @@ import { getValidTransitions } from '@/features/applications/repositories/applic
 interface StatusUpdateButtonProps {
   applicationId: string;
   currentStatus: string;
-  userId: string;
 }
 
 const STATUS_LABELS: Record<string, string> = {
@@ -24,11 +23,7 @@ const STATUS_LABELS: Record<string, string> = {
 
 const DANGER_STATUSES = ['rejected', 'withdrawn'];
 
-export function StatusUpdateButton({
-  applicationId,
-  currentStatus,
-  userId,
-}: StatusUpdateButtonProps) {
+export function StatusUpdateButton({ applicationId, currentStatus }: StatusUpdateButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [confirmStatus, setConfirmStatus] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();

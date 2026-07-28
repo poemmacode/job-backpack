@@ -12,8 +12,8 @@
 | 006 | Job Details                | completado |
 | 007 | Application Tracking       | completado |
 | 008 | Application Dashboard      | completado |
-| 009 | Application Status Updates | completado  |
-| 010 | Notes                      | pendiente  |
+| 009 | Application Status Updates | completado |
+| 010 | Notes                      | completado  |
 | 011 | Attachments                | pendiente  |
 | 012 | Recruiters                 | pendiente  |
 | 013 | Main Dashboard             | pendiente  |

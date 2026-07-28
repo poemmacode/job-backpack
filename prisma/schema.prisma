@@ -44,8 +44,22 @@ model Application {
   job       Job      @relation(fields: [jobId], references: [id])
   userId    String
   user      User     @relation(fields: [userId], references: [id])
+  notes     Note[]
 
   @@unique([jobId, userId])
   @@index([userId])
   @@index([status])
+}
+
+model Note {
+  id            String      @id @default(uuid())
+  content       String
+  type          String      @default("general")
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([applicationId])
+  @@index([type])
 }
