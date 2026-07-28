@@ -6,10 +6,9 @@ import { deleteApplicationAction } from '@/features/applications/actions/applica
 
 interface DeleteApplicationButtonProps {
   applicationId: string;
-  userId: string;
 }
 
-export function DeleteApplicationButton({ applicationId, userId }: DeleteApplicationButtonProps) {
+export function DeleteApplicationButton({ applicationId }: DeleteApplicationButtonProps) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
