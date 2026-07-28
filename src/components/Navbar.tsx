@@ -1,29 +1,54 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from './Button';
 import Logo from './Logo';
+import BackpackIcon from './BackpackIcon';
 import { logout } from '@/features/auth/actions/auth';
 
 interface NavbarProps {
   user?: {
     email?: string;
   } | null;
+  showBack?: boolean;
 }
 
-export function Navbar({ user }: NavbarProps) {
+export function Navbar({ user, showBack = false }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center">
-            <div className="h-8 w-32">
-              <Logo />
-            </div>
-          </Link>
+          <div className="flex items-center gap-3">
+            {showBack && (
+              <button
+                type="button"
+                onClick={() => router.back()}
+                className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+            )}
+            <Link href="/" className="flex items-center gap-2">
+              <div className="h-8 w-8">
+                <BackpackIcon />
+              </div>
+              <div className="h-6 w-24">
+                <Logo />
+              </div>
+            </Link>
+          </div>
 
           <div className="hidden md:flex items-center space-x-8">
             <Link href="#features" className="text-gray-700 hover:text-gray-900 transition-colors">
