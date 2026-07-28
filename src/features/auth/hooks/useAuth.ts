@@ -12,5 +12,10 @@ export async function getUser() {
   }
 
   const dbUser = await getOrCreateUser(user.id, user.email || '');
+
+  if (!dbUser) {
+    return { ...user, dbUserId: user.id };
+  }
+
   return { ...user, dbUserId: dbUser.id };
 }
