@@ -85,6 +85,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     Applications
                   </Button>
                 </Link>
+                <Link href="/dashboard/kanban">
+                  <Button variant="secondary" size="sm">
+                    Kanban
+                  </Button>
+                </Link>
                 <Link href="/dashboard/jobs/new">
                   <Button variant="primary" size="sm">
                     Add Job
@@ -169,6 +174,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     <Link href="/dashboard/applications">
                       <Button variant="secondary" size="sm" className="w-full">
                         Applications
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/kanban">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Kanban
                       </Button>
                     </Link>
                     <Link href="/dashboard/jobs/new">

@@ -15,7 +15,7 @@
 | 009 | Application Status Updates | completado |
 | 010 | Notes                      | completado |
 | 011 | Attachments                | completado |
-| 012 | Kanban Board              | pendiente  |
+| 012 | Kanban Board              | completado  |
 | 013 | Recruiters                 | pendiente  |
 | 014 | Main Dashboard             | pendiente  |
 | 015 | User Profile               | pendiente  |
