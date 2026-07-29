@@ -7,6 +7,7 @@ import { Button } from './Button';
 import Logo from './Logo';
 import BackpackIcon from './BackpackIcon';
 import { logout } from '@/features/auth/actions/auth';
+import { SearchInput } from '@/features/search/components/SearchInput';
 
 interface NavbarProps {
   user?: {
@@ -70,6 +71,9 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-3">
             {user ? (
               <>
+                <div className="w-64">
+                  <SearchInput />
+                </div>
                 <Link href="/dashboard">
                   <Button variant="secondary" size="sm">
                     Dashboard
@@ -171,6 +175,9 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
               <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
                 {user ? (
                   <>
+                    <div className="px-2">
+                      <SearchInput />
+                    </div>
                     <Link href="/dashboard">
                       <Button variant="secondary" size="sm" className="w-full">
                         Dashboard
