@@ -17,7 +17,7 @@
 | 011 | Attachments                    | MVP            | Alta      | ✅ Completado |
 | 012 | Kanban Board                   | MVP            | Alta      | ✅ Completado |
 | 013 | Recruiters                     | MVP            | Alta      | ✅ Completado |
-| 014 | Main Dashboard                 | MVP            | Alta      | ⏳ Pendiente  |
+| 014 | Main Dashboard                 | MVP            | Alta      | ✅ Completado |
 | 015 | User Profile                   | MVP            | Alta      | ⏳ Pendiente  |
 | 016 | Global Search                  | MVP            | Media     | ⏳ Pendiente  |
 | 017 | Activity Timeline              | MVP            | Media     | ⏳ Pendiente  |

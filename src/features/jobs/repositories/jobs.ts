@@ -55,3 +55,9 @@ export async function deleteJob(id: string, userId: string) {
     where: { id },
   });
 }
+
+export async function getJobCount(userId: string) {
+  return prisma.job.count({
+    where: { userId },
+  });
+}
