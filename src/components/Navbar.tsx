@@ -90,6 +90,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     Kanban
                   </Button>
                 </Link>
+                <Link href="/dashboard/recruiters">
+                  <Button variant="secondary" size="sm">
+                    Recruiters
+                  </Button>
+                </Link>
                 <Link href="/dashboard/jobs/new">
                   <Button variant="primary" size="sm">
                     Add Job
@@ -179,6 +184,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     <Link href="/dashboard/kanban">
                       <Button variant="secondary" size="sm" className="w-full">
                         Kanban
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/recruiters">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Recruiters
                       </Button>
                     </Link>
                     <Link href="/dashboard/jobs/new">

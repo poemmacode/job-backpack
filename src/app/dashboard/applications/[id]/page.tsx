@@ -10,6 +10,8 @@ import { NoteSection } from '@/features/notes/components/NoteSection';
 import { getNotesByApplication } from '@/features/notes/repositories/notes';
 import { AttachmentSection } from '@/features/attachments/components/AttachmentSection';
 import { getAttachments } from '@/features/attachments/repositories/attachments';
+import { RecruiterSection } from '@/features/recruiters/components/RecruiterSection';
+import { getRecruitersByApplication } from '@/features/recruiters/repositories/recruiters';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -29,9 +31,10 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const [notes, attachments] = await Promise.all([
+  const [notes, attachments, recruiters] = await Promise.all([
     getNotesByApplication(id),
     getAttachments(id),
+    getRecruitersByApplication(id),
   ]);
 
   return (
@@ -99,6 +102,10 @@ export default async function ApplicationDetailPage({ params }: PageProps) {
 
         <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
           <NoteSection applicationId={application.id} initialNotes={notes} />
+        </div>
+
+        <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">
+          <RecruiterSection applicationId={application.id} recruiters={recruiters} />
         </div>
 
         <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6">

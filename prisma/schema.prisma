@@ -17,6 +17,8 @@ model User {
   updatedAt    DateTime      @updatedAt
   jobs         Job[]
   applications Application[]
+  recruiters   Recruiter[]
+
 }
 
 model Job {
@@ -36,6 +38,24 @@ model Job {
   @@index([userId])
 }
 
+model Recruiter {
+  id           String        @id @default(uuid())
+  name         String
+  email        String?
+  phone        String?
+  company      String?
+  linkedIn     String?
+  notes        String?
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  applications ApplicationRecruiter[]
+
+  @@index([userId])
+  @@index([email])
+}
+
 model Application {
   id          String       @id @default(uuid())
   status      String       @default("interested")
@@ -47,6 +67,7 @@ model Application {
   user        User         @relation(fields: [userId], references: [id])
   notes       Note[]
   attachments Attachment[]
+  recruiters  ApplicationRecruiter[]
 
   @@unique([jobId, userId])
   @@index([userId])
@@ -77,4 +98,18 @@ model Attachment {
   createdAt     DateTime    @default(now())
 
   @@index([applicationId])
+}
+
+model ApplicationRecruiter {
+  id             String      @id @default(uuid())
+  applicationId  String
+  recruiterId    String
+  role           String?
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  recruiter      Recruiter   @relation(fields: [recruiterId], references: [id], onDelete: Cascade)
+  createdAt      DateTime    @default(now())
+
+  @@unique([applicationId, recruiterId])
+  @@index([applicationId])
+  @@index([recruiterId])
 }
