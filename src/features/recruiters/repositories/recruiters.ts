@@ -137,3 +137,9 @@ export async function searchRecruiters(userId: string, query: string) {
     orderBy: { createdAt: 'desc' },
   });
 }
+
+export async function getRecruiterCount(userId: string) {
+  return prisma.recruiter.count({
+    where: { userId },
+  });
+}

@@ -18,7 +18,7 @@
 | 012 | Kanban Board                   | MVP            | Alta      | ✅ Completado |
 | 013 | Recruiters                     | MVP            | Alta      | ✅ Completado |
 | 014 | Main Dashboard                 | MVP            | Alta      | ✅ Completado |
-| 015 | User Profile                   | MVP            | Alta      | ⏳ Pendiente  |
+| 015 | User Profile                   | MVP            | Alta      | ✅ Completado |
 | 016 | Global Search                  | MVP            | Media     | ⏳ Pendiente  |
 | 017 | Activity Timeline              | MVP            | Media     | ⏳ Pendiente  |
 | 018 | CI/CD Pipeline                 | Infrastructure | Media     | ⏳ Pendiente  |

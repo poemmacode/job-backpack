@@ -95,6 +95,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     Recruiters
                   </Button>
                 </Link>
+                <Link href="/dashboard/profile">
+                  <Button variant="secondary" size="sm">
+                    Profile
+                  </Button>
+                </Link>
                 <Link href="/dashboard/jobs/new">
                   <Button variant="primary" size="sm">
                     Add Job
@@ -189,6 +194,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     <Link href="/dashboard/recruiters">
                       <Button variant="secondary" size="sm" className="w-full">
                         Recruiters
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/profile">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Profile
                       </Button>
                     </Link>
                     <Link href="/dashboard/jobs/new">
