@@ -20,7 +20,7 @@
 | 014 | Main Dashboard                 | MVP            | Alta      | ✅ Completado |
 | 015 | User Profile                   | MVP            | Alta      | ✅ Completado |
 | 016 | Global Search                  | MVP            | Media     | ✅ Completado |
-| 017 | Activity Timeline              | MVP            | Media     | ⏳ Pendiente  |
+| 017 | Activity Timeline              | MVP            | Media     | ✅ Completado |
 | 018 | CI/CD Pipeline                 | Infrastructure | Media     | ⏳ Pendiente  |
 | 019 | Production Deployment (Vercel) | Infrastructure | Alta      | ⏳ Pendiente  |
 | 020 | Monitoring & Error Tracking    | Infrastructure | Media     | ⏳ Pendiente  |

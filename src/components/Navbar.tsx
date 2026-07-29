@@ -99,6 +99,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     Recruiters
                   </Button>
                 </Link>
+                <Link href="/dashboard/activity">
+                  <Button variant="secondary" size="sm">
+                    Activity
+                  </Button>
+                </Link>
                 <Link href="/dashboard/profile">
                   <Button variant="secondary" size="sm">
                     Profile
@@ -201,6 +206,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     <Link href="/dashboard/recruiters">
                       <Button variant="secondary" size="sm" className="w-full">
                         Recruiters
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/activity">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Activity
                       </Button>
                     </Link>
                     <Link href="/dashboard/profile">
