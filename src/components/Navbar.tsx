@@ -104,6 +104,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     Activity
                   </Button>
                 </Link>
+                <Link href="/dashboard/search-profiles">
+                  <Button variant="secondary" size="sm">
+                    Search Profiles
+                  </Button>
+                </Link>
                 <Link href="/dashboard/profile">
                   <Button variant="secondary" size="sm">
                     Profile
@@ -211,6 +216,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     <Link href="/dashboard/activity">
                       <Button variant="secondary" size="sm" className="w-full">
                         Activity
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/search-profiles">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Search Profiles
                       </Button>
                     </Link>
                     <Link href="/dashboard/profile">
