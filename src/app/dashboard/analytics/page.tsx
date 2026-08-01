@@ -48,7 +48,6 @@ async function AnalyticsContent({ range }: { range: DateRange }) {
         <AnalyticsPageClient
           initialData={data}
           initialRange={range}
-          onRangeChange={() => {}}
         />
       </div>
     </div>
