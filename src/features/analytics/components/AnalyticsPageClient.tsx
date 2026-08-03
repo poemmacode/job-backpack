@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { DateRange } from '../types/analytics';
 import { AnalyticsFilters } from './AnalyticsFilters';
 import { TrendChart } from './TrendChart';
