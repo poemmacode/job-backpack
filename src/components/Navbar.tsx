@@ -114,6 +114,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     Scraper
                   </Button>
                 </Link>
+                <Link href="/dashboard/saved">
+                  <Button variant="secondary" size="sm">
+                    Saved
+                  </Button>
+                </Link>
                 <Link href="/dashboard/profile">
                   <Button variant="secondary" size="sm">
                     Profile
@@ -231,6 +236,11 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                     <Link href="/dashboard/scraper">
                       <Button variant="secondary" size="sm" className="w-full">
                         Scraper
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/saved">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Saved
                       </Button>
                     </Link>
                     <Link href="/dashboard/profile">

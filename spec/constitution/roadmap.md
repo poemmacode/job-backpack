@@ -28,7 +28,7 @@
 | 022 | Analytics Dashboard            | V2             | Alta      | ✅ Completado |
 | 023 | Search Profiles                | V2             | Alta      | ✅ Completado |
 | 024 | Job Scraper                    | V2             | Alta      | ✅ Completado |
-| 025 | Saved Opportunities            | V2             | Alta      | ⏳ Pendiente  |
+| 025 | Saved Opportunities            | V2             | Alta      | ✅ Completado |
 | 026 | Browser Extension              | V2             | Media     | ⏳ Pendiente  |
 | 027 | Email Import / Parsing         | V2             | Media     | ⏳ Pendiente  |
 | 028 | Calendar & Interview Reminders | V2             | Media     | ⏳ Pendiente  |

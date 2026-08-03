@@ -9,16 +9,17 @@ datasource db {
 }
 
 model User {
-  id             String           @id @default(uuid())
-  email          String           @unique
-  name           String?
-  avatarUrl      String?
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  jobs           Job[]
-  applications   Application[]
-  recruiters     Recruiter[]
-  searchProfiles SearchProfile[]
+  id                 String             @id @default(uuid())
+  email              String             @unique
+  name               String?
+  avatarUrl          String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  jobs               Job[]
+  applications       Application[]
+  recruiters         Recruiter[]
+  searchProfiles     SearchProfile[]
+  savedOpportunities SavedOpportunity[]
 }
 
 model Job {
@@ -130,4 +131,23 @@ model SearchProfile {
   user      User     @relation(fields: [userId], references: [id])
 
   @@index([userId])
+}
+
+model SavedOpportunity {
+  id        String   @id @default(uuid())
+  title     String
+  company   String
+  location  String?
+  url       String?
+  salary    String?
+  notes     String?
+  priority  String   @default("normal")
+  source    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([priority])
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { JobResult } from '../types/scraper';
+import { SaveButton } from '@/features/saved/components/SaveButton';
 
 interface ScraperResultCardProps {
   job: JobResult;
@@ -50,15 +51,25 @@ export function ScraperResultCard({ job, isSelected, onToggle }: ScraperResultCa
           </div>
         </div>
 
-        <a
-          href={job.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="text-sm text-blue-600 hover:text-blue-700 font-medium whitespace-nowrap"
-        >
-          View →
-        </a>
+        <div className="flex items-center gap-3">
+          <SaveButton
+            title={job.title}
+            company={job.company}
+            location={job.location}
+            url={job.url}
+            salary={job.salary}
+            source={job.source}
+          />
+          <a
+            href={job.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="text-sm text-blue-600 hover:text-blue-700 font-medium whitespace-nowrap"
+          >
+            View →
+          </a>
+        </div>
       </div>
     </div>
   );
