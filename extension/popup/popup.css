@@ -33,6 +33,12 @@ main {
   padding: 16px;
 }
 
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
 .form-group {
   margin-bottom: 12px;
 }

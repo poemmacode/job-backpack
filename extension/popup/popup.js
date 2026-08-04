@@ -2,12 +2,14 @@ const API_BASE = 'https://job-backpack.vercel.app';
 
 const elements = {
   loading: document.getElementById('loading'),
-  noApiKey: document.getElementById('no-api-key'),
+  setupView: document.getElementById('setup-view'),
   noJob: document.getElementById('no-job'),
   jobForm: document.getElementById('job-form'),
   success: document.getElementById('success'),
   alreadySaved: document.getElementById('already-saved'),
-  settingsView: document.getElementById('settings-view'),
+  footer: document.getElementById('footer'),
+  setupApiKey: document.getElementById('setup-api-key'),
+  setupSaveBtn: document.getElementById('setup-save-btn'),
   title: document.getElementById('title'),
   company: document.getElementById('company'),
   location: document.getElementById('location'),
@@ -17,16 +19,15 @@ const elements = {
   saveBtn: document.getElementById('save-btn'),
   viewBtn: document.getElementById('view-btn'),
   settingsBtn: document.getElementById('settings-btn'),
-  apiKeyInput: document.getElementById('api-key-input'),
-  saveKeyBtn: document.getElementById('save-key-btn'),
-  cancelSettingsBtn: document.getElementById('cancel-settings-btn'),
-  keySaved: document.getElementById('key-saved'),
 };
 
-function showElement(el) {
+function hideAll() {
   Object.values(elements).forEach(e => {
-    if (e && e !== el) e.classList.add('hidden');
+    if (e) e.classList.add('hidden');
   });
+}
+
+function show(el) {
   if (el) el.classList.remove('hidden');
 }
 
@@ -39,16 +40,11 @@ async function saveApiKey(apiKey) {
   await chrome.storage.local.set({ apiKey });
 }
 
-async function checkIfJobExists(url) {
-  const apiKey = await getApiKey();
-  if (!apiKey) return false;
-
+async function checkIfJobExists(url, apiKey) {
   try {
     const response = await fetch(
       `${API_BASE}/api/extension/check?url=${encodeURIComponent(url)}`,
-      {
-        headers: { 'x-api-key': apiKey },
-      }
+      { headers: { 'x-api-key': apiKey } }
     );
     const data = await response.json();
     return data.exists;
@@ -57,10 +53,7 @@ async function checkIfJobExists(url) {
   }
 }
 
-async function saveJob(jobData) {
-  const apiKey = await getApiKey();
-  if (!apiKey) throw new Error('No API key');
-
+async function saveJob(jobData, apiKey) {
   const response = await fetch(`${API_BASE}/api/extension/save`, {
     method: 'POST',
     headers: {
@@ -70,34 +63,34 @@ async function saveJob(jobData) {
     body: JSON.stringify(jobData),
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to save job');
-  }
-
+  if (!response.ok) throw new Error('Failed to save');
   return response.json();
 }
 
 async function init() {
+  hideAll();
+  
   const apiKey = await getApiKey();
 
   if (!apiKey) {
-    showElement(elements.noApiKey);
+    show(elements.setupView);
     return;
   }
 
-  showElement(elements.loading);
+  show(elements.loading);
+  show(elements.footer);
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   if (!tab?.url) {
-    showElement(elements.noJob);
+    show(elements.noJob);
     return;
   }
 
-  const jobExists = await checkIfJobExists(tab.url);
+  const jobExists = await checkIfJobExists(tab.url, apiKey);
 
   if (jobExists) {
-    showElement(elements.alreadySaved);
+    show(elements.alreadySaved);
     elements.viewBtn.onclick = () => {
       chrome.tabs.create({ url: `${API_BASE}/dashboard/jobs` });
     };
@@ -106,7 +99,7 @@ async function init() {
 
   chrome.tabs.sendMessage(tab.id, { action: 'scrapeJob' }, async (response) => {
     if (chrome.runtime.lastError || !response?.job) {
-      showElement(elements.noJob);
+      show(elements.noJob);
       return;
     }
 
@@ -117,11 +110,29 @@ async function init() {
     elements.salary.value = job.salary || '';
     elements.url.value = job.url || tab.url;
 
-    showElement(elements.jobForm);
+    show(elements.jobForm);
   });
 }
 
+elements.setupSaveBtn.addEventListener('click', async () => {
+  const apiKey = elements.setupApiKey.value.trim();
+  
+  if (!apiKey) {
+    alert('Please enter an API key');
+    return;
+  }
+
+  elements.setupSaveBtn.disabled = true;
+  elements.setupSaveBtn.textContent = 'Saving...';
+
+  await saveApiKey(apiKey);
+  
+  init();
+});
+
 elements.saveBtn.addEventListener('click', async () => {
+  const apiKey = await getApiKey();
+  
   const jobData = {
     title: elements.title.value,
     company: elements.company.value,
@@ -140,8 +151,8 @@ elements.saveBtn.addEventListener('click', async () => {
   elements.saveBtn.textContent = 'Saving...';
 
   try {
-    await saveJob(jobData);
-    showElement(elements.success);
+    await saveJob(jobData, apiKey);
+    show(elements.success);
   } catch (error) {
     alert('Failed to save job. Please try again.');
     elements.saveBtn.disabled = false;
@@ -150,30 +161,11 @@ elements.saveBtn.addEventListener('click', async () => {
 });
 
 elements.settingsBtn.addEventListener('click', async () => {
-  const currentKey = await getApiKey();
-  elements.apiKeyInput.value = currentKey || '';
-  showElement(elements.settingsView);
-  elements.keySaved.classList.add('hidden');
-});
-
-elements.saveKeyBtn.addEventListener('click', async () => {
-  const newKey = elements.apiKeyInput.value.trim();
-  
-  if (!newKey) {
-    alert('Please enter an API key');
-    return;
-  }
-
-  await saveApiKey(newKey);
-  elements.keySaved.classList.remove('hidden');
-  
-  setTimeout(() => {
-    init();
-  }, 1000);
-});
-
-elements.cancelSettingsBtn.addEventListener('click', () => {
-  init();
+  const apiKey = await getApiKey();
+  hideAll();
+  elements.setupApiKey.value = apiKey || '';
+  show(elements.setupView);
+  show(elements.footer);
 });
 
 init();

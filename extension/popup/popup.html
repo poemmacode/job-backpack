@@ -17,13 +17,21 @@
         <p>Loading...</p>
       </div>
 
-      <div id="no-api-key" class="hidden">
-        <p class="warning">No API key configured</p>
-        <p class="text-sm">Go to Settings to add your API key.</p>
+      <div id="setup-view" class="hidden">
+        <h2 class="section-title">Setup API Key</h2>
+        <p class="text-sm mb-3">Enter your API key to connect with Job Backpack.</p>
+        <div class="form-group">
+          <input type="text" id="setup-api-key" placeholder="jb_..." class="api-key-input">
+        </div>
+        <p class="text-xs text-gray-500 mb-3">
+          Find your key at: Job Backpack → Extension page
+        </p>
+        <button id="setup-save-btn" class="btn-primary">Save & Continue</button>
       </div>
 
       <div id="no-job" class="hidden">
         <p class="warning">No job detected on this page</p>
+        <p class="text-sm">Navigate to a job listing on LinkedIn, Indeed, Glassdoor, or Wellfound.</p>
       </div>
 
       <div id="job-form" class="hidden">
@@ -63,24 +71,9 @@
         <p class="warning">This job is already saved</p>
         <button id="view-btn" class="btn-secondary">View in Job Backpack</button>
       </div>
-
-      <div id="settings-view" class="hidden">
-        <div class="form-group">
-          <label for="api-key-input">API Key</label>
-          <input type="text" id="api-key-input" placeholder="jb_..." class="api-key-input">
-        </div>
-        <p class="text-xs text-gray-500 mb-3">
-          Find your API key at Job Backpack → Dashboard → Extension
-        </p>
-        <div class="flex gap-2">
-          <button id="save-key-btn" class="btn-primary flex-1">Save Key</button>
-          <button id="cancel-settings-btn" class="btn-secondary flex-1">Cancel</button>
-        </div>
-        <p id="key-saved" class="success hidden mt-2">✓ API key saved!</p>
-      </div>
     </main>
 
-    <footer>
+    <footer id="footer" class="hidden">
       <button id="settings-btn" class="btn-icon" title="Settings">⚙️</button>
     </footer>
   </div>
