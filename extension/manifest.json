@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Job Backpack",
   "version": "1.0.0",
-  "description": "Save jobs directly from any job board to Job Backpack",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "description": "Save job descriptions from any page",
+  "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -16,8 +16,5 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  },
-  "background": {
-    "service_worker": "background/service-worker.js"
   }
 }

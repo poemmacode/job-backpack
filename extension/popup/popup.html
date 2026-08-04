@@ -2,24 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Backpack</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div id="app">
-    <div id="setup" class="hidden">
-      <h2>Setup API Key</h2>
-      <input type="text" id="api-key" placeholder="Paste your API key">
-      <button id="save-key">Save</button>
-      <p class="hint">Find it at Job Backpack → Extension page</p>
+    <div id="loading">Reading page...</div>
+    <div id="preview" class="hidden">
+      <h2 id="title"></h2>
+      <div id="description"></div>
+      <button id="save-btn">Save Job</button>
     </div>
-
-    <div id="main" class="hidden">
-      <div id="loading">Saving job...</div>
-      <div id="success" class="hidden">✓ Saved!</div>
-      <div id="error" class="hidden"></div>
-    </div>
+    <div id="success" class="hidden">✓ Saved!</div>
+    <div id="error" class="hidden"></div>
   </div>
   <script src="popup.js"></script>
 </body>
