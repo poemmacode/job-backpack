@@ -74,56 +74,6 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                 <div className="w-64">
                   <SearchInput />
                 </div>
-                <Link href="/dashboard">
-                  <Button variant="secondary" size="sm">
-                    Dashboard
-                  </Button>
-                </Link>
-                <Link href="/dashboard/jobs">
-                  <Button variant="secondary" size="sm">
-                    My Jobs
-                  </Button>
-                </Link>
-                <Link href="/dashboard/applications">
-                  <Button variant="secondary" size="sm">
-                    Applications
-                  </Button>
-                </Link>
-                <Link href="/dashboard/kanban">
-                  <Button variant="secondary" size="sm">
-                    Kanban
-                  </Button>
-                </Link>
-                <Link href="/dashboard/recruiters">
-                  <Button variant="secondary" size="sm">
-                    Recruiters
-                  </Button>
-                </Link>
-                <Link href="/dashboard/activity">
-                  <Button variant="secondary" size="sm">
-                    Activity
-                  </Button>
-                </Link>
-                <Link href="/dashboard/search-profiles">
-                  <Button variant="secondary" size="sm">
-                    Search Profiles
-                  </Button>
-                </Link>
-                <Link href="/dashboard/scraper">
-                  <Button variant="secondary" size="sm">
-                    Scraper
-                  </Button>
-                </Link>
-                <Link href="/dashboard/saved">
-                  <Button variant="secondary" size="sm">
-                    Saved
-                  </Button>
-                </Link>
-                <Link href="/dashboard/profile">
-                  <Button variant="secondary" size="sm">
-                    Profile
-                  </Button>
-                </Link>
                 <Link href="/dashboard/jobs/new">
                   <Button variant="primary" size="sm">
                     Add Job
@@ -218,6 +168,16 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                         Kanban
                       </Button>
                     </Link>
+                    <Link href="/dashboard/scraper">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Scraper
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/saved">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Saved
+                      </Button>
+                    </Link>
                     <Link href="/dashboard/recruiters">
                       <Button variant="secondary" size="sm" className="w-full">
                         Recruiters
@@ -228,19 +188,14 @@ export function Navbar({ user, showBack = false }: NavbarProps) {
                         Activity
                       </Button>
                     </Link>
+                    <Link href="/dashboard/analytics">
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Analytics
+                      </Button>
+                    </Link>
                     <Link href="/dashboard/search-profiles">
                       <Button variant="secondary" size="sm" className="w-full">
                         Search Profiles
-                      </Button>
-                    </Link>
-                    <Link href="/dashboard/scraper">
-                      <Button variant="secondary" size="sm" className="w-full">
-                        Scraper
-                      </Button>
-                    </Link>
-                    <Link href="/dashboard/saved">
-                      <Button variant="secondary" size="sm" className="w-full">
-                        Saved
                       </Button>
                     </Link>
                     <Link href="/dashboard/profile">

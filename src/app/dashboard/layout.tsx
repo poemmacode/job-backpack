@@ -1,4 +1,5 @@
 import { Navbar } from '@/components/Navbar';
+import { Sidebar } from '@/components/Sidebar';
 import { getUser } from '@/features/auth/hooks/useAuth';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -7,7 +8,10 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <>
       <Navbar user={user} showBack />
-      {children}
+      <Sidebar user={user} />
+      <main className="lg:pl-60 pt-16 min-h-screen bg-gray-50">
+        {children}
+      </main>
     </>
   );
 }
