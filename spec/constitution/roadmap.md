@@ -29,7 +29,7 @@
 | 023 | Search Profiles                | V2             | Alta      | ✅ Completado |
 | 024 | Job Scraper                    | V2             | Alta      | ✅ Completado |
 | 025 | Saved Opportunities            | V2             | Alta      | ✅ Completado |
-| 026 | Browser Extension              | V2             | Media     | ⏳ Pendiente  |
+| 026 | Browser Extension              | V2             | Media     | ✅ Completado |
 | 027 | Email Import / Parsing         | V2             | Media     | ⏳ Pendiente  |
 | 028 | Calendar & Interview Reminders | V2             | Media     | ⏳ Pendiente  |
 | 029 | Notifications Center           | V2             | Media     | ⏳ Pendiente  |

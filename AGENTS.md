@@ -54,9 +54,22 @@ spec/features/NNN-feature-name
 11. Verificar build
 12. Actualizar documentación
 13. Marcar tareas completadas
-14. Actualizar roadmap.mp
+14. Actualizar roadmap.md
+15. Hacer commit y push automáticamente
 
 Nunca saltarse pasos.
+
+---
+
+# Git / Commits
+
+Después de completar un feature (lint, tests, build pasando):
+
+1. `git add` de todos los archivos modificados/creados
+2. `git commit` con mensaje: `feat: add [feature name] (Feature NNN)`
+3. `git push` automático
+
+No pedir permiso para commit/push. Es parte del flujo.
 
 ---
 

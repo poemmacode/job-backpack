@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Backpack</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>🎒 Job Backpack</h1>
+    </header>
+
+    <main>
+      <div id="loading" class="hidden">
+        <p>Loading...</p>
+      </div>
+
+      <div id="no-api-key" class="hidden">
+        <p class="warning">No API key configured</p>
+        <p>Click the gear icon to set up your API key.</p>
+      </div>
+
+      <div id="no-job" class="hidden">
+        <p class="warning">No job detected on this page</p>
+      </div>
+
+      <div id="job-form" class="hidden">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location">
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <input type="text" id="salary">
+        </div>
+        <div class="form-group">
+          <label for="url">URL</label>
+          <input type="text" id="url" readonly>
+        </div>
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="2"></textarea>
+        </div>
+
+        <button id="save-btn" class="btn-primary">Save to Job Backpack</button>
+      </div>
+
+      <div id="success" class="hidden">
+        <p class="success">✓ Job saved successfully!</p>
+      </div>
+
+      <div id="already-saved" class="hidden">
+        <p class="warning">This job is already saved</p>
+        <button id="view-btn" class="btn-secondary">View in Job Backpack</button>
+      </div>
+    </main>
+
+    <footer>
+      <button id="settings-btn" class="btn-icon" title="Settings">⚙️</button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
