@@ -9,39 +9,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'API key required' }, { status: 401 });
     }
 
-    const user = await prisma.user.findFirst({
-      where: { apiKey },
-    });
+    const user = await prisma.user.findFirst({ where: { apiKey } });
 
     if (!user) {
       return NextResponse.json({ error: 'Invalid API key' }, { status: 401 });
     }
 
-    const body = await request.json();
-    const { title, company, location, url, salary, notes } = body;
+    const { title, company, location, salary, description, url } = await request.json();
 
     if (!title || !company) {
-      return NextResponse.json(
-        { error: 'Title and company are required' },
-        { status: 400 }
-      );
-    }
-
-    const existingJob = await prisma.job.findFirst({
-      where: {
-        userId: user.id,
-        url: url || undefined,
-        title,
-        company,
-      },
-    });
-
-    if (existingJob) {
-      return NextResponse.json({
-        success: true,
-        job: existingJob,
-        alreadyExists: true,
-      });
+      return NextResponse.json({ error: 'Title and company required' }, { status: 400 });
     }
 
     const job = await prisma.job.create({
@@ -51,14 +28,12 @@ export async function POST(request: NextRequest) {
         location: location || null,
         url: url || null,
         salary: salary || null,
-        notes: notes
-          ? `${notes}\n\nSaved via Browser Extension`
-          : 'Saved via Browser Extension',
+        notes: description || null,
         userId: user.id,
       },
     });
 
-    return NextResponse.json({ success: true, job, alreadyExists: false });
+    return NextResponse.json({ success: true, job });
   } catch (error) {
     console.error('Extension save error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

@@ -3,7 +3,7 @@
   "name": "Job Backpack",
   "version": "1.0.0",
   "description": "Save jobs directly from job boards to Job Backpack",
-  "permissions": ["activeTab", "storage", "scripting"],
+  "permissions": ["activeTab", "storage"],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {

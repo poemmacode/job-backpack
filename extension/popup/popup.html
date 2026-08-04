@@ -8,76 +8,19 @@
 </head>
 <body>
   <div id="app">
-    <header>
-      <h1>🎒 Job Backpack</h1>
-    </header>
+    <div id="setup" class="hidden">
+      <h2>Setup API Key</h2>
+      <input type="text" id="api-key" placeholder="Paste your API key">
+      <button id="save-key">Save</button>
+      <p class="hint">Find it at Job Backpack → Extension page</p>
+    </div>
 
-    <main>
-      <div id="loading" class="hidden">
-        <p>Loading...</p>
-      </div>
-
-      <div id="setup-view" class="hidden">
-        <h2 class="section-title">Setup API Key</h2>
-        <p class="text-sm mb-3">Enter your API key to connect with Job Backpack.</p>
-        <div class="form-group">
-          <input type="text" id="setup-api-key" placeholder="jb_..." class="api-key-input">
-        </div>
-        <p class="text-xs text-gray-500 mb-3">
-          Find your key at: Job Backpack → Extension page
-        </p>
-        <button id="setup-save-btn" class="btn-primary">Save & Continue</button>
-      </div>
-
-      <div id="no-job" class="hidden">
-        <p class="warning">No job detected on this page</p>
-        <p class="text-sm">Navigate to a job listing on LinkedIn, Indeed, Glassdoor, or Wellfound.</p>
-      </div>
-
-      <div id="job-form" class="hidden">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" required>
-        </div>
-        <div class="form-group">
-          <label for="company">Company</label>
-          <input type="text" id="company" required>
-        </div>
-        <div class="form-group">
-          <label for="location">Location</label>
-          <input type="text" id="location">
-        </div>
-        <div class="form-group">
-          <label for="salary">Salary</label>
-          <input type="text" id="salary">
-        </div>
-        <div class="form-group">
-          <label for="url">URL</label>
-          <input type="text" id="url" readonly>
-        </div>
-        <div class="form-group">
-          <label for="notes">Notes</label>
-          <textarea id="notes" rows="2"></textarea>
-        </div>
-
-        <button id="save-btn" class="btn-primary">Save to Job Backpack</button>
-      </div>
-
-      <div id="success" class="hidden">
-        <p class="success">✓ Job saved successfully!</p>
-      </div>
-
-      <div id="already-saved" class="hidden">
-        <p class="warning">This job is already saved</p>
-        <button id="view-btn" class="btn-secondary">View in Job Backpack</button>
-      </div>
-    </main>
-
-    <footer id="footer" class="hidden">
-      <button id="settings-btn" class="btn-icon" title="Settings">⚙️</button>
-    </footer>
+    <div id="main" class="hidden">
+      <div id="loading">Saving job...</div>
+      <div id="success" class="hidden">✓ Saved!</div>
+      <div id="error" class="hidden"></div>
+    </div>
   </div>
-
   <script src="popup.js"></script>
 </body>
 </html>
