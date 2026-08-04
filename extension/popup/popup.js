@@ -7,6 +7,7 @@ const elements = {
   jobForm: document.getElementById('job-form'),
   success: document.getElementById('success'),
   alreadySaved: document.getElementById('already-saved'),
+  settingsView: document.getElementById('settings-view'),
   title: document.getElementById('title'),
   company: document.getElementById('company'),
   location: document.getElementById('location'),
@@ -16,6 +17,10 @@ const elements = {
   saveBtn: document.getElementById('save-btn'),
   viewBtn: document.getElementById('view-btn'),
   settingsBtn: document.getElementById('settings-btn'),
+  apiKeyInput: document.getElementById('api-key-input'),
+  saveKeyBtn: document.getElementById('save-key-btn'),
+  cancelSettingsBtn: document.getElementById('cancel-settings-btn'),
+  keySaved: document.getElementById('key-saved'),
 };
 
 function showElement(el) {
@@ -144,15 +149,31 @@ elements.saveBtn.addEventListener('click', async () => {
   }
 });
 
-elements.settingsBtn.addEventListener('click', () => {
-  const currentKey = elements.settingsBtn.dataset.key || '';
-  const newKey = prompt('Enter your Job Backpack API key:', currentKey);
+elements.settingsBtn.addEventListener('click', async () => {
+  const currentKey = await getApiKey();
+  elements.apiKeyInput.value = currentKey || '';
+  showElement(elements.settingsView);
+  elements.keySaved.classList.add('hidden');
+});
 
-  if (newKey !== null) {
-    saveApiKey(newKey).then(() => {
-      init();
-    });
+elements.saveKeyBtn.addEventListener('click', async () => {
+  const newKey = elements.apiKeyInput.value.trim();
+  
+  if (!newKey) {
+    alert('Please enter an API key');
+    return;
   }
+
+  await saveApiKey(newKey);
+  elements.keySaved.classList.remove('hidden');
+  
+  setTimeout(() => {
+    init();
+  }, 1000);
+});
+
+elements.cancelSettingsBtn.addEventListener('click', () => {
+  init();
 });
 
 init();
