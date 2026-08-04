@@ -4,6 +4,10 @@ function scrapeJob() {
   const title = (h1 || h2)?.textContent?.trim() || document.title;
 
   const body = document.body.innerText;
+  const lowerBody = body.toLowerCase();
+
+  const location = lowerBody.includes('remote') ? 'Remote' : 'In Office';
+
   const patterns = [
     /job\s*description/i,
     /descripci[oó]n\s*(del\s*)?puesto/i,
@@ -16,7 +20,6 @@ function scrapeJob() {
   ];
 
   let description = '';
-  const lowerBody = body.toLowerCase();
 
   for (const pattern of patterns) {
     const match = lowerBody.match(pattern);
@@ -43,7 +46,12 @@ function scrapeJob() {
     description = longP.join('\n\n');
   }
 
-  return { title, description, url: window.location.href };
+  return {
+    title,
+    description,
+    location,
+    url: window.location.href,
+  };
 }
 
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
