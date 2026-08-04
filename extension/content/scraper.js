@@ -30,6 +30,66 @@ const SCRAPERS = {
     salary: null,
     description: document.querySelector('[data-test="job-description"]')?.textContent?.trim()?.substring(0, 5000),
   }),
+
+  generic: () => {
+    const ogTitle = document.querySelector('meta[property="og:title"]')?.content;
+    const metaDesc = document.querySelector('meta[property="og:description"], meta[name="description"]')?.content;
+
+    const title = ogTitle
+      || document.querySelector('h1')?.textContent?.trim()
+      || document.title;
+
+    const allText = document.body.innerText.substring(0, 10000);
+
+    const companyPatterns = [
+      /(?:at|@|for|empresa:?\s*|compa[ñn]ía:?\s*)([A-Z][\w\s&]+)/i,
+      /(?:About|Somos|Empresa)\s*[:\-]?\s*([^\n]+)/i,
+    ];
+
+    let company = null;
+    for (const pattern of companyPatterns) {
+      const match = allText.match(pattern);
+      if (match) {
+        company = match[1].trim().substring(0, 100);
+        break;
+      }
+    }
+
+    const locationPatterns = [
+      /(?:Location|Ubicación|Lugar|Remote|Remoto|Hybrid|Híbrido|On-site|Presencial)[:\s]*([^\n]+)/i,
+      /((?:Remote|Remoto|Hybrid|Híbrido|On-site|Presencial)[^\n]*)/i,
+      /((?:[A-Z][\w]+(?:\s|,))+(?:,\s*[A-Z]{2})?)/,
+    ];
+
+    let location = null;
+    for (const pattern of locationPatterns) {
+      const match = allText.match(pattern);
+      if (match) {
+        location = (match[1] || match[0]).trim().substring(0, 100);
+        break;
+      }
+    }
+
+    const salaryPatterns = [
+      /(?:Salary|Salario|Compensation|Sueldo)[:\s]*([^\n]+)/i,
+      /(?:\$|USD|EUR|COP|MXN|ARS|CLP)\s*[\d,.]+(?:\s*[-–]\s*(?:\$|USD|EUR|COP|MXN|ARS|CLP)?\s*[\d,.]+)?/i,
+      /[\d,.]+\s*(?:USD|EUR|COP|MXN|ARS|CLP|a[nno]+|monthly|mensual)/i,
+    ];
+
+    let salary = null;
+    for (const pattern of salaryPatterns) {
+      const match = allText.match(pattern);
+      if (match) {
+        salary = (match[1] || match[0]).trim().substring(0, 50);
+        break;
+      }
+    }
+
+    const description = metaDesc
+      || document.querySelector('article, [class*="description"], [class*="detail"], main')?.textContent?.trim()?.substring(0, 5000);
+
+    return { title, company, location, salary, description };
+  }
 };
 
 function getSite() {
@@ -38,16 +98,19 @@ function getSite() {
   if (h.includes('indeed.com')) return 'indeed';
   if (h.includes('glassdoor.com')) return 'glassdoor';
   if (h.includes('wellfound.com')) return 'wellfound';
-  return null;
+  return 'generic';
+}
+
+function scrapeJob() {
+  const site = getSite();
+  const job = SCRAPERS[site]();
+  job.url = window.location.href;
+  return job;
 }
 
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
   if (req.action === 'scrapeJob') {
-    const site = getSite();
-    if (!site || !SCRAPERS[site]) return sendResponse({ job: null });
-    const job = SCRAPERS[site]();
-    job.url = window.location.href;
-    sendResponse({ job });
+    sendResponse({ job: scrapeJob() });
   }
   return true;
 });

@@ -11,7 +11,7 @@ async function saveApiKey(key) {
   await chrome.storage.local.set({ apiKey: key });
 }
 
-async function init() {
+async function scrapeAndSave() {
   const apiKey = await getApiKey();
 
   if (!apiKey) {
@@ -23,9 +23,31 @@ async function init() {
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['content/scraper.js'],
+    });
+  } catch (e) {
+    $('loading').classList.add('hidden');
+    $('error').textContent = 'Cannot run on this page';
+    $('error').classList.remove('hidden');
+    return;
+  }
+
   chrome.tabs.sendMessage(tab.id, { action: 'scrapeJob' }, async (response) => {
     if (chrome.runtime.lastError || !response?.job) {
-      $('error').textContent = 'Could not detect job on this page';
+      $('loading').classList.add('hidden');
+      $('error').textContent = 'Could not detect job data';
+      $('error').classList.remove('hidden');
+      return;
+    }
+
+    const job = response.job;
+
+    if (!job.title && !job.company) {
+      $('loading').classList.add('hidden');
+      $('error').textContent = 'No job data found on this page';
       $('error').classList.remove('hidden');
       return;
     }
@@ -37,22 +59,19 @@ async function init() {
           'Content-Type': 'application/json',
           'x-api-key': apiKey,
         },
-        body: JSON.stringify(response.job),
+        body: JSON.stringify(job),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Failed to save');
-      }
+      if (!res.ok) throw new Error(data.error || 'Failed to save');
 
       $('loading').classList.add('hidden');
       $('success').classList.remove('hidden');
-
       setTimeout(() => window.close(), 1500);
     } catch (err) {
       $('loading').classList.add('hidden');
-      $('error').textContent = err.message || 'Failed to save job';
+      $('error').textContent = err.message || 'Failed to save';
       $('error').classList.remove('hidden');
     }
   });
@@ -65,4 +84,4 @@ $('save-key').addEventListener('click', async () => {
   window.close();
 });
 
-init();
+scrapeAndSave();

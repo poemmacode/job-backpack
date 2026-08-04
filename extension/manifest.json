@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Job Backpack",
   "version": "1.0.0",
-  "description": "Save jobs directly from job boards to Job Backpack",
-  "permissions": ["activeTab", "storage"],
+  "description": "Save jobs directly from any job board to Job Backpack",
+  "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -17,18 +17,6 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "*://*.linkedin.com/jobs/*",
-        "*://*.indeed.com/*",
-        "*://*.glassdoor.com/*",
-        "*://*.wellfound.com/*"
-      ],
-      "js": ["content/scraper.js"],
-      "run_at": "document_idle"
-    }
-  ],
   "background": {
     "service_worker": "background/service-worker.js"
   }
