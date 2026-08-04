@@ -1,32 +1,31 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import { getUser } from '@/features/auth/hooks/useAuth';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/prisma';
 import { Navbar } from '@/components/Navbar';
+import { randomBytes } from 'crypto';
 
-export default function ExtensionPage() {
-  const [apiKey, setApiKey] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+export default async function ExtensionPage() {
+  const user = await getUser();
 
-  useEffect(() => {
-    async function fetchApiKey() {
-      try {
-        const response = await fetch('/api/user/api-key');
-        const data = await response.json();
-        setApiKey(data.apiKey);
-      } catch {
-        console.error('Failed to fetch API key');
-      }
-    }
-    fetchApiKey();
-  }, []);
+  if (!user) {
+    redirect('/login');
+  }
 
-  const handleCopyApiKey = () => {
-    if (apiKey) {
-      navigator.clipboard.writeText(apiKey);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+  let dbUser = await prisma.user.findUnique({
+    where: { id: user.dbUserId },
+    select: { apiKey: true },
+  });
+
+  if (!dbUser?.apiKey) {
+    const randomPart = randomBytes(16).toString('hex');
+    const apiKey = `jb_${Buffer.from(`${user.dbUserId}_${randomPart}`).toString('base64')}`;
+    
+    dbUser = await prisma.user.update({
+      where: { id: user.dbUserId },
+      data: { apiKey },
+      select: { apiKey: true },
+    });
+  }
 
   return (
     <>
@@ -62,16 +61,12 @@ export default function ExtensionPage() {
           </p>
           <div className="flex items-center gap-4">
             <code className="flex-1 bg-gray-100 px-4 py-2 rounded text-sm break-all">
-              {apiKey || 'No API key available'}
+              {dbUser?.apiKey || 'No API key available'}
             </code>
-            <button
-              onClick={handleCopyApiKey}
-              disabled={!apiKey}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-300"
-            >
-              {copied ? 'Copied!' : 'Copy'}
-            </button>
           </div>
+          <p className="text-sm text-gray-500 mt-3">
+            Copy this key and paste it in the extension settings (click the gear icon).
+          </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
