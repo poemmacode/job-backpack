@@ -7,7 +7,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <>
-      <Navbar user={user} showBack />
+      <Navbar user={user} />
       <Sidebar user={user} />
       <main className="lg:pl-60 pt-16 min-h-screen bg-gray-50">
         {children}
