@@ -17,8 +17,15 @@ export async function getJob(id: string, userId: string) {
 export async function createJob(data: CreateJobInput, userId: string) {
   return prisma.job.create({
     data: {
-      ...data,
+      title: data.title,
+      company: data.company,
+      location: data.location || null,
       url: data.url || null,
+      salary: data.salary || null,
+      notes: data.notes || null,
+      englishRequired: data.englishRequired || false,
+      englishLevel: data.englishLevel || null,
+      employmentType: data.employmentType || null,
       userId,
     },
   });
@@ -36,8 +43,15 @@ export async function updateJob(id: string, data: UpdateJobInput, userId: string
   return prisma.job.update({
     where: { id },
     data: {
-      ...data,
+      title: data.title,
+      company: data.company,
+      location: data.location || null,
       url: data.url || null,
+      salary: data.salary || null,
+      notes: data.notes || null,
+      englishRequired: data.englishRequired || false,
+      englishLevel: data.englishLevel || null,
+      employmentType: data.employmentType || null,
     },
   });
 }

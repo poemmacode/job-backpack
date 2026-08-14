@@ -13,6 +13,9 @@ interface JobFormProps {
     url?: string | null;
     salary?: string | null;
     notes?: string | null;
+    englishRequired?: boolean;
+    englishLevel?: string | null;
+    employmentType?: string | null;
   };
   submitLabel: string;
 }
@@ -22,6 +25,7 @@ export function JobForm({ jobId, initialData, submitLabel }: JobFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [errors, setErrors] = useState<Record<string, string[]>>({});
   const [isPending, setIsPending] = useState(false);
+  const [englishRequired, setEnglishRequired] = useState(initialData?.englishRequired || false);
 
   async function handleSubmit(formData: FormData) {
     setIsPending(true);
@@ -110,6 +114,56 @@ export function JobForm({ jobId, initialData, submitLabel }: JobFormProps) {
           placeholder="$100,000 - $150,000"
         />
       </div>
+
+      <div className="flex gap-4">
+        <div className="flex-1">
+          <label htmlFor="employmentType" className="block text-sm font-medium text-gray-700">
+            Employment Type
+          </label>
+          <select
+            id="employmentType"
+            name="employmentType"
+            defaultValue={initialData?.employmentType ?? ''}
+            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+          >
+            <option value="">Select type</option>
+            <option value="fulltime">Full Time</option>
+            <option value="contractor">Contractor</option>
+          </select>
+        </div>
+
+        <div className="flex-1">
+          <div className="flex items-center h-full pt-6">
+            <input
+              type="checkbox"
+              id="englishRequired"
+              name="englishRequired"
+              checked={englishRequired}
+              onChange={(e) => setEnglishRequired(e.target.checked)}
+              className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label htmlFor="englishRequired" className="ml-2 text-sm text-gray-700">
+              English Required
+            </label>
+          </div>
+        </div>
+      </div>
+
+      {englishRequired && (
+        <div>
+          <label htmlFor="englishLevel" className="block text-sm font-medium text-gray-700">
+            English Level
+          </label>
+          <input
+            id="englishLevel"
+            name="englishLevel"
+            type="text"
+            defaultValue={initialData?.englishLevel ?? ''}
+            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
+            placeholder="e.g. B2, C1, Fluent, Native"
+          />
+        </div>
+      )}
 
       <div>
         <label htmlFor="notes" className="block text-sm font-medium text-gray-700">

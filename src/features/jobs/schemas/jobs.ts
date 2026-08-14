@@ -7,6 +7,9 @@ export const createJobSchema = z.object({
   url: z.string().url('Please enter a valid URL').optional().or(z.literal('')),
   salary: z.string().optional(),
   notes: z.string().optional(),
+  englishRequired: z.boolean().optional(),
+  englishLevel: z.string().optional(),
+  employmentType: z.string().optional(),
 });
 
 export const updateJobSchema = createJobSchema;

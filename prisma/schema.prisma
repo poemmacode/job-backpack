@@ -24,18 +24,21 @@ model User {
 }
 
 model Job {
-  id           String        @id @default(uuid())
-  title        String
-  company      String
-  location     String?
-  url          String?
-  salary       String?
-  notes        String?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  userId       String
-  user         User          @relation(fields: [userId], references: [id])
-  applications Application[]
+  id             String        @id @default(uuid())
+  title          String
+  company        String
+  location       String?
+  url            String?
+  salary         String?
+  notes          String?
+  englishRequired Boolean      @default(false)
+  englishLevel   String?
+  employmentType String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  applications   Application[]
 
   @@index([userId])
 }

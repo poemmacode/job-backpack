@@ -19,6 +19,9 @@ export async function createJobAction(formData: FormData) {
     url: formData.get('url'),
     salary: formData.get('salary'),
     notes: formData.get('notes'),
+    englishRequired: formData.get('englishRequired') === 'on',
+    englishLevel: formData.get('englishLevel'),
+    employmentType: formData.get('employmentType'),
   });
 
   if (!validatedFields.success) {
@@ -44,6 +47,9 @@ export async function updateJobAction(id: string, formData: FormData) {
     url: formData.get('url'),
     salary: formData.get('salary'),
     notes: formData.get('notes'),
+    englishRequired: formData.get('englishRequired') === 'on',
+    englishLevel: formData.get('englishLevel'),
+    employmentType: formData.get('employmentType'),
   });
 
   if (!validatedFields.success) {
