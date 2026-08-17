@@ -16,6 +16,16 @@ export const metadata: Metadata = {
   title: 'Job Backpack - Organiza tu búsqueda de empleo',
   description:
     'Trackea tus postulaciones, CVs y entrevistas en un solo lugar. Diseñado para profesionales de tecnología.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon.png', type: 'image/png', sizes: '48x48' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: {
+    images: ['/icon.png'],
+  },
 };
 
 export default function RootLayout({

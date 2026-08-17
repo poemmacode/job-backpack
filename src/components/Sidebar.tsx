@@ -24,7 +24,6 @@ const MAIN_NAV: NavItem[] = [
 ];
 
 const TOOLS_NAV: NavItem[] = [
-  { label: 'Scraper', href: '/dashboard/scraper', icon: '🔍' },
   { label: 'Saved', href: '/dashboard/saved', icon: '⭐' },
   { label: 'Search Profiles', href: '/dashboard/search-profiles', icon: '🎯' },
 ];
