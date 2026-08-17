@@ -27,23 +27,22 @@
 | 021 | Automated Testing              | Infrastructure | Media     | ✅ Completado |
 | 022 | Analytics Dashboard            | V2             | Alta      | ✅ Completado |
 | 023 | Search Profiles                | V2             | Alta      | ✅ Completado |
-| 024 | Saved Opportunities            | V2             | Alta      | ✅ Completado |
-| 025 | Browser Extension              | V2             | Media     | ✅ Completado |
-| 026 | Email Import / Parsing         | V2             | Media     | ⏳ Pendiente  |
-| 027 | Calendar & Interview Reminders | V2             | Media     | ⏳ Pendiente  |
-| 028 | Notifications Center           | V2             | Media     | ⏳ Pendiente  |
-| 029 | Documents Library              | V2             | Media     | ⏳ Pendiente  |
-| 030 | Resume Versions                | V2             | Alta      | ⏳ Pendiente  |
-| 031 | Cover Letter Generator         | V2             | Media     | ⏳ Pendiente  |
-| 032 | Company Profiles               | V2             | Baja      | ⏳ Pendiente  |
-| 033 | Recruiter CRM                  | V2             | Media     | ⏳ Pendiente  |
-| 034 | Custom Favicon                 | V2             | Alta      | ⏳ Pendiente  |
-| 035 | AI Career Insights             | AI             | Alta      | ⏳ Pendiente  |
-| 036 | AI Resume Advisor              | AI             | Alta      | ⏳ Pendiente  |
-| 037 | AI Interview Coach             | AI             | Alta      | ⏳ Pendiente  |
-| 038 | AI Skill Gap Analysis          | AI             | Alta      | ⏳ Pendiente  |
-| 039 | AI Job Matching                | AI             | Alta      | ⏳ Pendiente  |
-| 040 | Public Feedback & Roadmap      | Growth         | Baja      | ⏳ Pendiente  |
+| 024 | Browser Extension              | V2             | Media     | ✅ Completado |
+| 025 | Email Import / Parsing         | V2             | Media     | ⏳ Pendiente  |
+| 026 | Calendar & Interview Reminders | V2             | Media     | ⏳ Pendiente  |
+| 027 | Notifications Center           | V2             | Media     | ⏳ Pendiente  |
+| 028 | Documents Library              | V2             | Media     | ⏳ Pendiente  |
+| 029 | Resume Versions                | V2             | Alta      | ⏳ Pendiente  |
+| 030 | Cover Letter Generator         | V2             | Media     | ⏳ Pendiente  |
+| 031 | Company Profiles               | V2             | Baja      | ⏳ Pendiente  |
+| 032 | Recruiter CRM                  | V2             | Media     | ⏳ Pendiente  |
+| 033 | Custom Favicon                 | V2             | Alta      | ⏳ Pendiente  |
+| 034 | AI Career Insights             | AI             | Alta      | ⏳ Pendiente  |
+| 035 | AI Resume Advisor              | AI             | Alta      | ⏳ Pendiente  |
+| 036 | AI Interview Coach             | AI             | Alta      | ⏳ Pendiente  |
+| 037 | AI Skill Gap Analysis          | AI             | Alta      | ⏳ Pendiente  |
+| 038 | AI Job Matching                | AI             | Alta      | ⏳ Pendiente  |
+| 039 | Public Feedback & Roadmap      | Growth         | Baja      | ⏳ Pendiente  |
 
 
 ## Futuro
