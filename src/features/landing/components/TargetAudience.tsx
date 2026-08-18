@@ -13,10 +13,10 @@ export function TargetAudience() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-          Para profesionales de tecnología
+          For tech professionals
         </h2>
         <p className="text-lg text-gray-600 mb-10">
-          Diseñado para quienes buscan empleo en el sector tech
+          Designed for those looking for jobs in the tech industry
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {audiences.map((audience) => (

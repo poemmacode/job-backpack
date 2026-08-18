@@ -2,17 +2,17 @@ const steps = [
   {
     number: '1',
     title: "Save jobs you're interested in",
-    description: 'Encuentra vacantes y guárdalas en tu backpack para revisarlas después.',
+    description: 'Find job listings and save them to your backpack to review later.',
   },
   {
     number: '2',
     title: 'Track your applications',
-    description: 'Convierte las vacantes en postulaciones y sigue su progreso.',
+    description: 'Convert listings into applications and track their progress.',
   },
   {
     number: '3',
     title: 'Get insights to improve',
-    description: 'Analiza tus patrones y recibe sugerencias para mejorar tu búsqueda.',
+    description: 'Analyze your patterns and get suggestions to improve your search.',
   },
 ];
 
@@ -21,8 +21,8 @@ export function HowItWorks() {
     <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Cómo funciona</h2>
-          <p className="text-lg text-gray-600">Tres pasos para organizar tu búsqueda</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How it works</h2>
+          <p className="text-lg text-gray-600">Three steps to organize your search</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step) => (

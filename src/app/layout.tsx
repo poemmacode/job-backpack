@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Job Backpack - Organiza tu búsqueda de empleo',
+  title: 'Job Backpack - Organize your job search',
   description:
-    'Trackea tus postulaciones, CVs y entrevistas en un solo lugar. Diseñado para profesionales de tecnología.',
+    'Track your applications, resumes, and interviews in one place. Built for tech professionals.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },

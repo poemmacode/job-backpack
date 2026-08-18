@@ -2,7 +2,7 @@ const features = [
   {
     title: 'Job Tracking',
     description:
-      'Guarda vacantes de interés y mantenlas organizadas por empresa, estado o prioridad.',
+      'Save job listings and keep them organized by company, status, or priority.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -16,7 +16,7 @@ const features = [
   },
   {
     title: 'Application Management',
-    description: 'Trackea el estado de cada postulación: desde interested hasta offer.',
+    description: 'Track the status of each application: from interested to offer.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -30,7 +30,7 @@ const features = [
   },
   {
     title: 'Notes & Attachments',
-    description: 'Guarda CVs, cover letters y notas de cada entrevista en un solo lugar.',
+    description: 'Save resumes, cover letters, and interview notes in one place.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -45,7 +45,7 @@ const features = [
   {
     title: 'AI Insights',
     description:
-      'Recibe análisis inteligentes sobre tus patrones de postulación y áreas de mejora.',
+      'Get intelligent insights on your application patterns and areas for improvement.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -65,10 +65,10 @@ export function Features() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Todo lo que necesitas
+            Everything you need
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Herramientas diseñadas para hacer tu búsqueda de empleo más efectiva
+            Tools designed to make your job search more effective
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -37,12 +37,13 @@
 | 031 | Company Profiles               | V2             | Baja      | ⏳ Pendiente  |
 | 032 | Recruiter CRM                  | V2             | Media     | ⏳ Pendiente  |
 | 033 | Custom Favicon                 | V2             | Alta      | ⏳ Pendiente  |
-| 034 | AI Career Insights             | AI             | Alta      | ⏳ Pendiente  |
-| 035 | AI Resume Advisor              | AI             | Alta      | ⏳ Pendiente  |
-| 036 | AI Interview Coach             | AI             | Alta      | ⏳ Pendiente  |
-| 037 | AI Skill Gap Analysis          | AI             | Alta      | ⏳ Pendiente  |
-| 038 | AI Job Matching                | AI             | Alta      | ⏳ Pendiente  |
-| 039 | Public Feedback & Roadmap      | Growth         | Baja      | ⏳ Pendiente  |
+| 034 | English Site                   | Foundation     | Alta      | ⏳ Pendiente  |
+| 035 | AI Career Insights             | AI             | Alta      | ⏳ Pendiente  |
+| 036 | AI Resume Advisor              | AI             | Alta      | ⏳ Pendiente  |
+| 037 | AI Interview Coach             | AI             | Alta      | ⏳ Pendiente  |
+| 038 | AI Skill Gap Analysis          | AI             | Alta      | ⏳ Pendiente  |
+| 039 | AI Job Matching                | AI             | Alta      | ⏳ Pendiente  |
+| 040 | Public Feedback & Roadmap      | Growth         | Baja      | ⏳ Pendiente  |
 
 
 ## Futuro
